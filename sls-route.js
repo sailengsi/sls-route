@@ -38,7 +38,7 @@
          *     必须以注册的路由+"/"开头才可匹配成功
          *     而不能仅仅是以注册的路由开头就算匹配成功
          */
-        version: "1.1.0",
+        version: "1.4.0",
 
         /**
          * 是否开启debug模式。true开启;false关闭
@@ -47,7 +47,7 @@
         debug: true,
 
         /**
-         * 是否开启默认匹配路由,默认开启。
+         * 是否开启模糊匹配路由,默认开启。
          * 模糊匹配规则:当前路由只要是以注册的路由开头就算匹配成功。
          * @property {Boolean} blur
          */
@@ -107,8 +107,8 @@
                 return this;
             };
             this.routes = routes;
-            this.changeRouteFn = changeRouteFn.constructor === Function ? changeRouteFn : null;
-            this.defaultRouteFn = defaultRouteFn.constructor === Function ? defaultRouteFn : null;
+            this.changeRouteFn = changeRouteFn && changeRouteFn.constructor === Function ? changeRouteFn : null;
+            this.defaultRouteFn = defaultRouteFn && defaultRouteFn.constructor === Function ? defaultRouteFn : null;
             this.check();
         },
 
