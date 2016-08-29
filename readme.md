@@ -1,7 +1,14 @@
 ## sls-route.js使用说明 ##
 此路由采用UMD模式编写，所以不用多说,肯定是兼容node。
 
-演示地址：[http://js.sailengsi.com/demos/route/index.html](http://js.sailengsi.com/demos/route/index.html)
+演示地址：网站更改，还在更改中...
+
+本项目采用fis编写，项目结构：
+
+- dev	#开发源码
+- release #fis编译代码
+
+
 
 使用npm方式安装：npm install sls-route
 
