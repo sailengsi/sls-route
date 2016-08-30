@@ -10,7 +10,7 @@
 
 
 
-使用npm方式安装：npm install sls-route
+使用npm方式安装：npm install sls-route(因npm最近总是登录不成功，所以请以github上为最新代码)
 
 在浏览器端使用：
 	
