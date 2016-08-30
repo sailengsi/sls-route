@@ -1,7 +1,7 @@
 ## sls-route.js使用说明 ##
 此路由采用UMD模式编写，所以不用多说,肯定是兼容node。
 
-使用npm方式安装：npm install sls-route(因npm最近总是登录不成功，所以请以此为最新代码)
+使用npm方式安装：npm install sls-route
 
 演示地址：[http://demo.sailengsi.com/sls-route/release/](http://demo.sailengsi.com/sls-route/release/ "sls-route演示")
 
