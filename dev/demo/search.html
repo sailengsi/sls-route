@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <link rel='import' href='../components/includes/header.html?__inline'>
+        <title>sls-route,在搜索中使用的例子</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="well">
+                        <link rel='import' href='../components/pages/cancelList.html?__inline'>
+                        <h2>这个demo是在搜索中使用的例子</h2>
+                    </div>
+                    <div class="col-sm-12 well">
+                        <p>当前路由名称：<span class="route-name"></span></p>
+                        <p>当前路由参数：<span class="route-param"></span></p>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="content">
+                            <div class="col-sm-3">
+                                用户名
+                                <div class="form-group"><input type="text" class="form-control username"></div>
+                            </div>
+                            <div class="col-sm-3">
+                                年龄
+                                <div class="form-group"><input type="text" class="form-control age"></div>
+                            </div>
+                            <div class="col-sm-3">
+                                手机号
+                                <div class="form-group"><input type="text" class="form-control mobile"></div>
+                            </div>
+                            <div class="col-sm-3">
+                                search
+                                <div class="form-group"><div class="btn btn-info btn-search">搜索</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <link rel='import' href='../components/includes/footer.html?__inline'>
+        <script>
+            var routeName=document.querySelector('.route-name'),//路由名称选择器
+                routeParam=document.querySelector('.route-param'),//路由参数选择器
+
+                inputUsername=document.querySelector('.username'),
+                inputAge=document.querySelector('.age'),
+                inputMobile=document.querySelector('.mobile'),
+
+                btnSearch=document.querySelector('.btn-search');
+
+            var route=new SlsRoute({
+                routes:['search'],
+                changeRouteFn:function(route){
+                    routeName.innerHTML=route.action;
+                    routeParam.innerHTML=JSON.stringify(route.query);
+                },
+                defaultRouteFn:function(){
+                    this.redirect('search');
+                }
+            });
+
+            btnSearch.onclick=function(){
+                var param={};
+
+                if(inputUsername.value){
+                    param.username=inputUsername.value;
+                }
+
+                if(inputAge.value){
+                    param.age=inputAge.value;
+                }
+
+                if(inputMobile.value){
+                    param.mobile=inputMobile.value;
+                }
+
+                route.go('search',param);
+            }
+        </script>
+    </body>
+</html>
