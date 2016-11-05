@@ -1,0 +1,25 @@
+{
+  "name": "dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "fis3 release -wL",
+    "build": "rm -rf ../release && fis3 release",
+    "start": "fis3 server start --root ../release",
+    "stop": "fis3 server stop --root ../release",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fis3": "^3.4.24"
+  },
+  "devDependencies": {
+    "fis-parser-less": "^0.1.3",
+    "fis3-deploy-skip-packed": "0.0.5",
+    "fis3-hook-relative": "^1.0.9",
+    "fis3-packager-deps-pack": "^0.1.2",
+    "fis3-postpackager-loader": "^2.1.4"
+  }
+}
