@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="red-translucent" />
+<meta name="apple-mobile-web-app-title" content="" /> 
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+
+        <title>sls-route,路由对应的内容采用独立页面方式</title>
+    
+    <link rel="stylesheet" href="https://www.sailengsi.com/Public/common/other/bs/css/bootstrap.min.css" />
+    <style>
+	.sls-route-active{
+		background: red;
+	}
+</style>
+</head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="well">
+                        <a href="../index.html">返回demo首页</a>
+                        <h2>这个demo是将每个路由对应的内容通过独立页面方式分离</h2>
+                    </div>
+                    <div class="col-sm-12 well">
+                        <p>当前路由名称：<span class="route-name"></span></p>
+                        <p>当前路由参数：<span class="route-param"></span></p>
+                        <hr>
+                        <div class="btn btn-info toggle-blur">切换匹配模式</div>
+                        <p>当前匹配模式：<span class='route-blur'></span></p>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="list-group">
+                            <a href="#!home" class="list-group-item">首页</a>
+                            <a href="#!form?type=add&id=1" class="list-group-item">表单页</a>
+                            <a href="#!list?name/sls/age/22" class="list-group-item">列表页</a>
+                            <a href="#!list/article?list=article" class="list-group-item">文章列表(当匹配模式为true才会渲染内容)</a>
+                            <a href="#!list/pic?list/pic" class="list-group-item">图片列表(当匹配模式为true才会渲染内容)</a>
+                            <a href="#form" class="list-group-item">这个hash定界符不对，所以会被忽略</a>
+                        </div>  
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="well">这里根据内容动态显示内容</div>
+                        <div class="content">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+<script src="https://www.sailengsi.com/Public/common/other/jq/jquery.min.js"></script>
+<script src="../static/js/sls-route.js"></script>
+<script>
+            var routeName=document.querySelector('.route-name'),//路由名称选择器
+                routeParam=document.querySelector('.route-param'),//路由参数选择器
+                toggleBlurBtn=document.querySelector('.toggle-blur'),//切换模式按钮
+                blur=document.querySelector('.route-blur'),//显示当前匹配状态容器
+                content=document.querySelector('.content');//内容区域
+
+            var route=new SlsRoute({
+                routes:['home','list','form'],
+                hash:'#!',//这个值必须得和a标签中的href中的写的一致
+                changeRouteFn:function(route){
+                    routeName.innerHTML=route.action;
+                    routeParam.innerHTML=JSON.stringify(route.query);
+
+                    route.action=route.action.indexOf('/')!=-1 ? route.action.replace('/','-') : route.action;
+
+                    $.ajax({
+                        url: './pages/'+route.action+'.html',
+                        dataType: 'html',
+                    }).done(function(data) {
+                        $('.content').html(data);
+                    }).fail(function() {
+                        console.log("error");
+                    });
+                    
+                },
+                defaultRouteFn:function(){
+                    this.redirect('home');
+                }
+            });
+
+
+            //显示当前状态
+            blur.innerHTML=route.config.blur;
+
+            //切换模式事件
+            toggleBlurBtn.onclick=function(){
+                route.config.blur=!route.config.blur;
+                blur.innerHTML=route.config.blur;
+            }
+        </script>
+</body>
+</html>

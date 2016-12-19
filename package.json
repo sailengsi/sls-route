@@ -1,0 +1,18 @@
+{
+  "name": "sls-route",
+  "version": "1.2.2",
+  "description": "查看在线demo：[https://demo.sailengsi.com/sls-route/src/release/](https://demo.sailengsi.com/sls-route/src/release/ \"在线演示\")",
+  "main": "./src/release/static/js/sls-route.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sailengsi/sls-route.git"
+  },
+  "author": "赛冷思",
+  "license": "ISC"
+}

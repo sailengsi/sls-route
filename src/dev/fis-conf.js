@@ -4,7 +4,7 @@ var fisSource = {
     //压缩js和css
     uglify: {
         //压缩开关,为true时才执行压缩
-        flag: false,
+        flag: true,
         //需要压缩的js目录
         js: [
             'static/js/**.js'

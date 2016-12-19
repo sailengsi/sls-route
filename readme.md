@@ -10,15 +10,12 @@
 	git clone https://github.com/sailengsi/sls-route.git
 	
 	//进入项目中的dev目录
-	cd sls-route/dev
+	cd sls-route/src/dev
 	
 	//安装依赖
 	npm install
 	
-	//编译
-	npm run build
-	
 	//启动Server
 	npm start
 
-注意：npm run build时，会在项目根目录(sls-route)中创建release目录，此目录是把dev目录编译之后而生成，而npm start启动的服务，实际上是访问的release目录。
+**注意：npm start启动的服务，实际上是访问的src/release目录。**

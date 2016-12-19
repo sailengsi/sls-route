@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "fis3 release -wL",
+    "dev": "fis3 release -wL",
     "build": "rm -rf ../release && fis3 release",
     "start": "fis3 server start --root ../release",
     "stop": "fis3 server stop --root ../release",

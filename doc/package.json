@@ -1,0 +1,21 @@
+{
+    "name": "sls-route-doc",
+    "version": "1.0.0",
+    "description": "",
+    "keywords": [
+        "sls-route"
+    ],
+    "homepage": "https://www.sailengsi.com",
+    "author": "sailengsi",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sailengsi/sls-route"
+    },
+    "licenses": "MIT",
+    "idoc": {
+        "theme": "handbook",
+        "md": [
+            "首页.md"
+        ]
+    }
+}
